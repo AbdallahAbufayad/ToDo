@@ -1,6 +1,8 @@
 services:
   reverse-proxy:
-    build: ./reverse-proxy
+    build:
+      context: .
+      dockerfile: reverse-proxy/Dockerfile
     ports:
       - "80:80"
     volumes:
