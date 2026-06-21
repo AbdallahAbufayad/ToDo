@@ -1,11 +1,11 @@
 services:
   reverse-proxy:
     image: nginx:1.27
+    ports:
+    - "8080:80"
     volumes:
       - ./frontend:/usr/share/nginx/html
       - ./default.conf:/etc/nginx/conf.d/default.conf
-    labels:
-     - "traefik.http.routers.24-25-projectopdracht-devops-3bdoAP.rule=Host(`abdallahtest.be`)"
     networks:
      - traefik
   api:
