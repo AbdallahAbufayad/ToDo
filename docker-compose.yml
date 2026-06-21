@@ -2,12 +2,12 @@ services:
   reverse-proxy:
     image: nginx:1.27
     ports:
-    - "8080:80"
+      - "8080:80"
     volumes:
       - ./frontend:/usr/share/nginx/html
-      - ./default.conf:/etc/nginx/conf.d/default.conf
+      #- ./default.conf:/etc/nginx/conf.d/default.conf
     networks:
-     - traefik
+      - traefik
   api:
     build: ./backend
     environment:
@@ -35,5 +35,5 @@ volumes:
   db-volume:
 networks:
   traefik:
-   external: true
-   name: traefik
+    external: true
+    name: traefik
