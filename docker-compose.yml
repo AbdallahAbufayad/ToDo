@@ -1,11 +1,11 @@
 services:
   reverse-proxy:
-    image: nginx:1.27
+    build: ./reverse-proxy
     ports:
       - "80:80"
     volumes:
       - ./frontend:/usr/share/nginx/html
-      - ./default.conf:/etc/nginx/conf.d/default.conf
+
     networks:
       - traefik
   api:
