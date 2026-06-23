@@ -75,7 +75,7 @@ ul li.checked::before {
 
 /* Style the header */
 .header {
-  background-color: blue;
+  background-color: green;
   padding: 30px 40px;
   color: white;
   text-align: center;
