@@ -15,9 +15,9 @@ services:
     environment:
       - STORAGE=mysql
       - MYSQL_HOST=db
-      - MYSQL_USER=${USER}
-      - MYSQL_PWD=${PASS}
-      - MYSQL_DB=${DB}
+      - MYSQL_USER=todo
+      - MYSQL_PWD=DitIsGoed
+      - MYSQL_DB=$todo
     networks:
       - traefik
 
@@ -29,10 +29,10 @@ services:
       - db-volume:/var/lib/mysql
       - ./init.sql:/docker-entrypoint-initdb.d/init.sql
     environment:
-      - MYSQL_ROOT_PASSWORD=${ROOT_PASSWORD}
-      - MYSQL_USER=${USER}
-      - MYSQL_PASSWORD=${PASS}
-      - MYSQL_DATABASE=${DB}
+      - MYSQL_ROOT_PASSWORD=DitIsGoed
+      - MYSQL_USER=todo
+      - MYSQL_PASSWORD=DitIsGoed
+      - MYSQL_DATABASE=$todo
     networks:
       - traefik
 volumes:
