@@ -10,29 +10,24 @@ services:
   api:
     build: ./backend
 
-    env_file:
-      - .env
     environment:
       - STORAGE=mysql
       - MYSQL_HOST=db
       - MYSQL_USER=todo
       - MYSQL_PWD=DitIsGoed
-      - MYSQL_DB=$todo
+      - MYSQL_DB=todo
     networks:
       - traefik
 
   db:
-    image: mysql
-    env_file:
-      - .env
-    volumes:
-      - db-volume:/var/lib/mysql
-      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+    build:
+      context: .
+      dockerfile: Dockerfile.db
     environment:
       - MYSQL_ROOT_PASSWORD=DitIsGoed
       - MYSQL_USER=todo
       - MYSQL_PASSWORD=DitIsGoed
-      - MYSQL_DATABASE=$todo
+      - MYSQL_DATABASE=todo
     networks:
       - traefik
 volumes:
