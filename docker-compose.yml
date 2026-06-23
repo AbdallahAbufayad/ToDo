@@ -10,6 +10,8 @@ services:
   api:
     build: ./backend
 
+    env_file:
+      - .env
     environment:
       - STORAGE=mysql
       - MYSQL_HOST=db
@@ -23,6 +25,8 @@ services:
     build:
       context: .
       dockerfile: Dockerfile.db
+    volumes:
+      - db-volume:/var/lib/mysql
     environment:
       - MYSQL_ROOT_PASSWORD=DitIsGoed
       - MYSQL_USER=todo
